@@ -91,14 +91,38 @@
                 font-size: 24px;
                 font-family: 'Montserrat', sans-serif;
                 font-weight: 500;
-                filter: drop-shadow(2px 2px 4px #1f1f1f);
+                filter: drop-shadow(2px 2px 4px #F8D154);
                 transition: transform .2s; /* Animation */
             }
 
+            .nextButton {
+                padding: 16px 24px;
+                font-size: 24px;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 500;
+                color: #3F3F3F;
+                background-color: #F8D154;
+                border-color: #F8D154;
+                box-shadow: 0px 4px 4px rgb(0 0 0 / 95%);
+                border-radius: 16px 4px;
+            }
 
+                    
+            .languageButtonRow{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-right: 40px;
+            }
 
+            .languageButton{
+                background: none;
+                border: none;
+            }
 
-
+            .languageImg{
+                height: 48px;
+            }
 
 
             span {
@@ -195,7 +219,11 @@
         </style>
 
     </head>
-    <body style="background-color: rgb(51, 51, 56); color: white; background-image: url('../static/background.svg'); background-repeat: no-repeat; background-size: 100% ">
+    <body style="background-color: rgb(51, 51, 56); color: white; ">
+    
+        <!--
+            background-image: url('../static/background.svg'); background-repeat: no-repeat; background-size: 100% 
+        -->
 
         <div id="title-container" class="d-flex justify-content-center" style="margin-top: 96px;">
             <h1 style="text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 600; " id="heading" >
@@ -240,8 +268,75 @@
             {% endblock %}
         </div>
 
+        <div class="languageButtonRow">
+            <div class="row card-deck">
+                <form action="{{ url_for('handle_forms') }}" method="post">
+                    <p>
+                        <input type="hidden" name="answer" value="restart">
+                    </p>
+                    <p>
+                        <button id="restart" type="submit" class="languageButton">
+                            <div>
+                                <img src="../static/polflag.png" class="languageImg">
+                            </div>
+                        </button>
+                    </p>
+                </form>
+                <form action="{{ url_for('handle_forms') }}" method="post">
+                    <p>
+                        <input type="hidden" name="answer" value="restart" >
+                    </p>
+                    <p>
+                        <button id="restart" type="submit" class="languageButton">
+                            <div>
+                                <img src="../static/ukflag.png" class="languageImg">
+                            </div>
+                        </button>
+                    </p>
+                </form>
+                <form action="{{ url_for('handle_forms') }}" method="post">
+                    <p>
+                        <input type="hidden" name="answer" value="restart">
+                    </p>
+                    <p>
+                        <button id="restart" type="submit" class="languageButton">
+                            <div>
+                                <img src="../static/russflag.png" class="languageImg">
+                            </div>
+                        </button>
+                    </p>
+                </form>
+                <form action="{{ url_for('handle_forms') }}" method="post">
+                    <p>
+                        <input type="hidden" name="answer" value="restart">
+                    </p>
+                    <p>
+                        <button id="restart" type="submit" class="languageButton">
+                            <div>
+                                <img src="../static/gerflag.png" class="languageImg">
+                            </div>
+                        </button>
+                    </p>
+                </form>
+                <form action="{{ url_for('handle_forms') }}" method="post">
+                    <p>
+                        <input type="hidden" name="answer" value="restart">
+                    </p>
+                    <p>
+                        <button id="restart" type="submit" class="languageButton">
+                            <div>
+                                <img src="../static/restart.png" class="languageImg">
+                            </div>
+                        </button>
+                    </p>
+                </form>
+            </div>
+        </div>
+
         {% block script %}
         {% endblock %}
+
+
 
 
 

@@ -1,11 +1,7 @@
-
-
-from types import NoneType
 from flask import Flask, session, request, redirect, url_for, Response, json, render_template
 import os, base64, cv2, random, string, csv, calendar, time
 import numpy as np
 from datetime import datetime
-import tensorflow.lite as tflite
 
 
 app = Flask(__name__)
@@ -401,8 +397,11 @@ def reroute(id):
         return redirect(url_for('restart'))
     else:
         language = session.get('language', None)
-        page = id + "-" + language + ".html"
-        return render_template(page)
+        print("page ID:" + id)
+        page = id + "-" + "en" + ".html"
+        print("PAGE redirect:" + page)
+        print("PAGE language:" + language)
+        return render_template(page, language=language)
 
 @app.route('/')
 def restart():
@@ -446,16 +445,17 @@ def home():
         if form_variable_input == 'en':
             language = "en"     # TODO
         elif form_variable_input == 'de':
-            language = "en"     # TODO
+            language = "de"     # TODO
         elif form_variable_input == 'rus':
-            language = "en"     # TODO
+            language = "rus"     # TODO
         elif form_variable_input == 'pol':
-            language = "en"     # TODO
+            language = "pol"     # TODO
         else:
             return print("couldn't figure out language")
 
         session['language'] = language
-        page = "11"
+        page = "Introduction"
+        print("PAGE TO REDIRECT TO: " + page)
         return redirect(url_for('reroute', id=page))
     else:
         return render_template('home.html')

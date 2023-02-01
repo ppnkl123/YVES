@@ -208,21 +208,22 @@
         console.log("RESPONSE RECEIVED BACK")
         console.log(response);
 
-        responseType = response.responseType
-        responseMsg = response.responseMsg
+        responseType = response.responseType;
+        responseMsg = response.responseMsg;
+
 
         if (responseType == "detection"){
 
             if (responseMsg.label != "nothing"){
-                console.log("SOMETHING DETECTED")
+                console.log("SOMETHING DETECTED");
             } else {
-                console.log("NOTHING DETECTED")
+                console.log("NOTHING DETECTED");
             }
 
         } else if (responseType == "capture"){
             // DRAW IMAGE ONTO CANVAS
         } else if (responseType == "success"){
-            console.log(responseMsg)
+            console.log(responseMsg);
         }
 
     })
@@ -231,7 +232,6 @@
     });
 
     }
-
 
 var c = document.getElementById("videoStreamCanvas");
 var ctx = c.getContext("2d");
@@ -251,6 +251,38 @@ let submitForm = document.getElementById('submitForm');
 let subheading = document.getElementById('subheading');
 let heading = document.getElementById('heading');
 let keyboard = document.getElementById('keyboard');
+
+let language = '{{ language }}';
+    console.log("LANGUAGE" + language);
+
+    var headcontent = "";
+    var subcontent = "";
+
+    switch (language){
+        case "en":
+        console.log("LANGUAGE IS ENGLISH HIHI");
+        headcontent = "Place an object in my belly!"
+        subcontent = "Try getting it in the purple square."
+        break; 
+        case "de":
+        console.log("LANGUAGE IS GERMAN HIHI");
+        headcontent = "german"
+        subcontent = "german"
+        break;
+        case "rus":
+        console.log("LANGUAGE IS RUSSIAN HIHI");
+        headcontent = "russian"
+        subcontent = "russian"
+        break;
+        case "pol":
+        console.log("LANGUAGE IS POLISH HIHI");
+        headcontent = "polish"
+        subcontent = "polish"
+        break;
+    }
+
+    heading.innerHTML = headcontent;
+    subheading.innerHTML = subcontent;
 
 
 takeImage.addEventListener("click", function(){           
